@@ -36,6 +36,7 @@ public class Queue<T> {
     public T head(){
         return head.value;
     }
+    public T tail() { return tail.value; }
 
     public T remove(){
         Node<T> temp = head;

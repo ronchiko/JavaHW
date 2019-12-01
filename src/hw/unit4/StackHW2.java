@@ -323,9 +323,6 @@ public class StackHW2 {
         n2.push(11);
         n2.push(12);
 
-        Stack[] split = splitInto2Stacks(n1);
-
-        System.out.println(split[0]);
-        System.out.println(split[1]);
+        System.out.println(mergeStacks(n1, n2));
     }
 }

@@ -1,9 +1,13 @@
 package hw.unit4;
 
 import hw.unit4.core.Stack;
+import server.reflection.ServerMethod;
+import server.reflection.ServerMethodHost;
 
+@ServerMethodHost
 public class StackHW1 {
 
+    @ServerMethod(callName = "Insert", paramCount = 2)
     public static void insert(Stack<Integer> stk, int num){
         Stack<Integer> temp = new Stack<>();
 
@@ -25,6 +29,7 @@ public class StackHW1 {
             stk.push(temp.pop());
     }
 
+    @ServerMethod(callName = "Merge", paramCount = 2)
     public static Stack<Integer> merge(Stack<Integer> a, Stack<Integer> b){
         Stack<Integer> ta = new Stack<>(), tb = new Stack<>();
 
@@ -71,7 +76,8 @@ public class StackHW1 {
         c2.push(21);
 
 
-
+        System.out.println(c);
+        System.out.println(c2);
         System.out.println(merge(c2,c).toString());
     }
 }
