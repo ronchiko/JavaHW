@@ -1,8 +1,9 @@
-package expiramental.inegral;
+package expiramental.integral;
 
-import expiramental.inegral.nodes.AdditionIntegralUnitNode;
-import expiramental.inegral.nodes.PowerIntegralUnitNode;
-import expiramental.inegral.nodes.SimpleIntegralNode;
+import expiramental.integral.nodes.AdditionIntegralUnitNode;
+import expiramental.integral.nodes.MultiplicationIntegralUnitNode;
+import expiramental.integral.nodes.PowerIntegralUnitNode;
+import expiramental.integral.nodes.SimpleIntegralNode;
 
 import java.util.HashMap;
 
@@ -31,7 +32,7 @@ public class IntegralUnit {
         this.source = source.replace(" ","");
     }
 
-    public double integrate(float start, float end){
+    public double integrate(float start, float end) throws IntegrationException{
         if (!hasIntegrationTree){
             head = getUnitNode(0, source.length());
             hasIntegrationTree = true;
@@ -80,6 +81,9 @@ public class IntegralUnit {
                 break;
             case '^':
                 node = new PowerIntegralUnitNode("^");
+                break;
+            case '*':
+                node = new MultiplicationIntegralUnitNode("*");
                 break;
         }
 

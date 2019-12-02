@@ -1,6 +1,7 @@
-package expiramental.inegral.nodes;
+package expiramental.integral.nodes;
 
-import expiramental.inegral.IntegralUnitNode;
+import expiramental.integral.IntegralUnitNode;
+import expiramental.integral.IntegrationException;
 
 public class PowerIntegralUnitNode extends IntegralUnitNode {
 
@@ -9,7 +10,7 @@ public class PowerIntegralUnitNode extends IntegralUnitNode {
     }
 
     @Override
-    public String integrate() {
+    public String integrate() throws IntegrationException {
         String firstIntegration = children[1].integrate();
         return "(" + children[0].integrate() + "^(" + firstIntegration + "+1))/(" + firstIntegration + "+1)";
     }

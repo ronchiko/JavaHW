@@ -1,4 +1,4 @@
-package expiramental.inegral;
+package expiramental.integral;
 
 public abstract class IntegralUnitNode {
 
@@ -13,5 +13,5 @@ public abstract class IntegralUnitNode {
     public void setChild(int index, IntegralUnitNode value){
         children[index] = value;
     }
-    public abstract String integrate();
+    public abstract String integrate() throws IntegrationException;
 }

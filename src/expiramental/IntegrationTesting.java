@@ -1,24 +1,29 @@
 package expiramental;
 
-import expiramental.inegral.IntegralUnit;
+import expiramental.integral.IntegralUnit;
+import expiramental.integral.IntegrationException;
+import expiramental.queue.QueueSort;
+import hw.unit4.core.Queue;
 
 public class IntegrationTesting {
 
     private static final int ARRAY_SIZE = 1000000;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IntegrationException {
 
-        int[] array = new int[ARRAY_SIZE];
-        for (int i = 0; i < array.length; i++) {
-            array[i] = (int)(Math.random() * (ARRAY_SIZE * 2)) - ARRAY_SIZE;
-        }
-        System.out.println("Sort started");
-        Sorting.sort(array);
-        System.out.println("Sorting ended");
+        Queue<Integer> q = new Queue<>();
 
-        System.out.println(Sorting.isSorted(array));
+        q.insert(-900);
+        q.insert(800);
+        q.insert(89);
+        q.insert(-83);
+        q.insert(60);
 
-        // IntegralUnit unit = new IntegralUnit("x^2 + (x + 9)^3");
+        QueueSort.sort(q);
+
+        System.out.println(q);
+
+        IntegralUnit unit = new IntegralUnit("x^2 + 3 * x");
         // unit.integrate(0, 2);
     }
 }

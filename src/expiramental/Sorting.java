@@ -37,11 +37,12 @@ public class Sorting {
                 insert(a[s]);
             }
         };
-
+        // Find the middle point
         int m = (s + e) / 2;
-
+        // Sort the 2 sub arrays
         Queue<Integer> a1 = sort(a, s, m), a2 = sort(a, m, e), out = new Queue<>();
         int i = s;
+        // Merge the queues into the array
         while (!a1.isEmpty() || !a2.isEmpty()){
             int item;
             if(a1.isEmpty()) item = a2.remove();

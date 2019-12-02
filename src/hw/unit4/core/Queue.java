@@ -11,6 +11,7 @@ public class Queue<T> {
         }
     }
 
+    private int length;
     private Node<T> head, tail;
 
     public Queue(){
@@ -31,6 +32,7 @@ public class Queue<T> {
             tail.next = temp;
             tail = temp;
         }
+        length++;
     }
 
     public T head(){
@@ -38,9 +40,14 @@ public class Queue<T> {
     }
     public T tail() { return tail.value; }
 
+    public int length() {
+        return length;
+    }
+
     public T remove(){
         Node<T> temp = head;
         head = head.next;
+        length--;
         return temp.value;
     }
 
