@@ -1,5 +1,10 @@
 package deep_learning;
 
+import deep_learning.core.NeuralNetwork;
+import deep_learning.core.training.TrainingData;
+import deep_learning.core.training.trainers.NNTDTrainer;
+
+import java.io.IOException;
 import java.util.function.Function;
 import static java.lang.Math.log;
 import static java.lang.Math.pow;
@@ -58,5 +63,18 @@ public final class NNUtils {
     }
     public static float relu_prime(float z){
         return z > 0 ? 1 : 0;
+    }
+
+
+    public static void trainEpoch(NeuralNetwork network, String dataPath) throws IOException {
+        NNTDTrainer trainer = new NNTDTrainer(dataPath);
+        trainEpoch(network, trainer.epochs(), trainer);
+    }
+    public static void trainEpoch(NeuralNetwork network, int epoch, Function<Integer, TrainingData> collector){
+        for (int i = 0; i < epoch; i++) {
+            TrainingData data = collector.apply(epoch);
+            network.call(data.inputs());
+            network.train(data.outputs());
+        }
     }
 }
